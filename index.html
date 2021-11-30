@@ -6,9 +6,9 @@
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
 <script src="mapanimation.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css" />
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
 <style>
-  body { margin: 0; padding: 0; }
   #map { position: absolute; top: 0; bottom: 0; width: 100%; }
   .map-overlay{
       position: absolute;
@@ -22,7 +22,7 @@
 
 <div id="map"></div>
 <div class="map-overlay top">
-    <button style="font-size: 2em;" onclick="run()">
+    <button onclick="run()">
         See Route 77 Bus Locations
     </button>
 </div>
@@ -31,7 +31,7 @@
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/gjosephs/ckwlkz1d60d7215masdgiqyly',
     center: [-71.13627, 42.40115],
     zoom: 12.15
 });
