@@ -12,24 +12,53 @@ async function run(){
     based on how many 77 buses are currently on the road, and add as needed
     when more busses come into service.
 
-    I need to update this section to also subtract buses coming out of service
+    Also removes buses as they come out of service
     */
     if (markers.length !== locations.length) {
-        for (i=0; i<locations.length; i++){
-        const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
-        let busMarker = new mapboxgl.Marker()
-        .setLngLat(busLocation)
-        .addTo(map);
-        markers.push(busMarker);
+        if (markers.length === 0){
+            for (i=0; i<locations.length; i++){
+            const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
+            let busMarker = new mapboxgl.Marker()
+            .setLngLat(busLocation)
+            .addTo(map);
+            markers.push(busMarker);
+            }
+            console.log("Initiated Buses to markers array");
+        }
+        if (markers.length > locations.length) {
+            let difference = markers.length - locations.length;
+            for (i=1; i<=difference; i++){
+                markers.pop();
+            }
+            console.log("-----POPPED-----");
+            console.log("-----POPPED-----");
+            console.log("-----POPPED-----");
+            console.log("-----POPPED-----");
+            console.log("-----POPPED-----");
+        }
+        if (markers.length < locations.length) {
+            let difference = locations.length - markers.length;
+            for (i=difference; i>0; i--){
+                let totalBuses = locations.length;
+                const busLocation = [locations[totalBuses - i].attributes.longitude, locations[totalBuses - i].attributes.latitude];
+                let busMarker = new mapboxgl.Marker()
+                .setLngLat(busLocation)
+                .addTo(map);
+                markers.push(busMarker);
+            }
+            console.log("-----PUSHED-----");
+            console.log("-----PUSHED-----");
+            console.log("-----PUSHED-----");
+            console.log("-----PUSHED-----");
+            console.log("-----PUSHED-----");
         }
     }
     // Updates bus locations for each bus in 'markers'
     for (i=0; i<locations.length; i++) {
         const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
-        console.log(markers[i]);
         markers[i].setLngLat(busLocation)
-        console.log(busLocation);
     }
+    console.log("Buses in Service: " + locations.length);
 	// timer
 	setTimeout(run, 15000);
 }
