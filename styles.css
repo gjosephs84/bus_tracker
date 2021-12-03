@@ -1,18 +1,19 @@
 body { margin: 0; padding: 0; }
 button {
     font-size: 2em;
-    background-color: antiquewhite;
+    background-color: #f8eed1;
     border-radius: 15px;
+    opacity: .65;
 }
 
 #in-service {
     
-    background-color: antiquewhite;
+    background-color: #f8eed1;
     border-radius: 15px;
     margin-bottom: 10px;
     margin-left: 10px;
     border-style: solid;
     border-width: 2px;
+    opacity: .65;
     
 }
-div:empty { display: none }
