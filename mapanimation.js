@@ -18,8 +18,19 @@ async function run(){
         if (markers.length === 0){
             for (i=0; i<locations.length; i++){
             const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
-            let busMarker = new mapboxgl.Marker()
+            const directionID = locations[i].attributes.direction_id;
+            if (directionID == 1) {
+                var direction = "Inbound to Harvard";
+            } else {
+                var direction = "Outbound to Arlington Heights"
+            };
+            const popUpContents = "Direction: " + "<br>" + direction;
+            console.log(direction);
+            let busMarker = new mapboxgl.Marker({
+                color: "#7b7154" //add color
+            })
             .setLngLat(busLocation)
+            .setPopup(new mapboxgl.Popup().setHTML(popUpContents))
             .addTo(map);
             markers.push(busMarker);
             }
@@ -32,32 +43,33 @@ async function run(){
                 markers[indexToRemove].remove();
                 markers.pop();
             }
-            console.log("-----POPPED-----");
-            console.log("-----POPPED-----");
-            console.log("-----POPPED-----");
-            console.log("-----POPPED-----");
-            console.log("-----POPPED-----");
         }
         if (markers.length < locations.length) {
             let difference = locations.length - markers.length;
             for (i=difference; i>0; i--){
                 let totalBuses = locations.length;
                 const busLocation = [locations[totalBuses - i].attributes.longitude, locations[totalBuses - i].attributes.latitude];
-                let busMarker = new mapboxgl.Marker()
+                let busMarker = new mapboxgl.Marker({
+                    color: "#7b7154" //add color
+                })
                 .setLngLat(busLocation)
                 .addTo(map);
                 markers.push(busMarker);
             }
-            console.log("-----PUSHED-----");
-            console.log("-----PUSHED-----");
-            console.log("-----PUSHED-----");
-            console.log("-----PUSHED-----");
-            console.log("-----PUSHED-----");
         }
     }
     // Updates bus locations for each bus in 'markers'
     for (i=0; i<locations.length; i++) {
         const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
+        const directionID = locations[i].attributes.direction_id;
+        console.log("Direction ID: " + directionID);
+        if (directionID == 0) {
+                console.log("-------TRIGGERED-------")
+                markers[i].setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Outbound to Arlington Heights"));
+            } else {
+                console.log("Should set direction to Harvard");
+                markers[i].setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Inbound to Harvard"));  
+            }
         markers[i].setLngLat(busLocation)
     }
     
