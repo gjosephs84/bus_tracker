@@ -28,6 +28,8 @@ async function run(){
         if (markers.length > locations.length) {
             let difference = markers.length - locations.length;
             for (i=1; i<=difference; i++){
+                let indexToRemove = markers.length - 1;
+                markers[indexToRemove].remove();
                 markers.pop();
             }
             console.log("-----POPPED-----");
