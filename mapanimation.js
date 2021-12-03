@@ -60,7 +60,12 @@ async function run(){
         const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
         markers[i].setLngLat(busLocation)
     }
-    console.log("Buses in Service: " + locations.length);
+    
+    let inServiceDiv = document.getElementById("in-service");
+    inServiceDiv.style.visibility = "visible";
+    inServiceDiv.style.marginTop = (window.innerHeight - 70) + "px";
+    inServiceDiv.textContent = "Buses in Service: " + locations.length;
+    
 	// timer
 	setTimeout(run, 15000);
 }
