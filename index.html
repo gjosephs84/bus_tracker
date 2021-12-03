@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <title>Bus Tracker</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
 <script src="mapanimation.js"></script>
 <link rel="stylesheet" type="text/css" href="styles.css" />
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
 <style>
   #map { position: absolute; top: 0; bottom: 0; width: 100%; }
   .map-overlay{
@@ -29,11 +29,65 @@
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2pvc2VwaHMiLCJhIjoiY2t3aWFtZmFpMTZpMjMxcHdlcTZyamo0eCJ9.2bspyzmohDDgLS8-OsUtGQ'
 
-var map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/gjosephs/ckwlkz1d60d7215masdgiqyly',
     center: [-71.13627, 42.40115],
     zoom: 12.15
+});
+
+map.on('load', () => {
+map.addSource('route', {
+    'type': 'geojson',
+    'data': {
+    'type': 'Feature',
+    'properties': {},
+    'geometry': {
+    'type': 'LineString',
+    'coordinates': [
+        [-71.11913, 42.37358],
+        [-71.11856, 42.37587],
+        [-71.11976, 42.37676],
+        [-71.12010, 42.37778],
+        [-71.11914, 42.38692],
+        [-71.11977, 42.38917],
+        [-71.12101, 42.39032],
+        [-71.12384, 42.39172],
+        [-71.13064, 42.39778],
+        [-71.13344, 42.39980],
+        [-71.13680, 42.40136],
+        [-71.14736, 42.40980],
+        [-71.14904, 42.41264],
+        [-71.14937, 42.41302],
+        [-71.15127, 42.41471],
+        [-71.15466, 42.41595],
+        [-71.16352, 42.41728],
+        [-71.17265, 42.42182],
+        [-71.17465, 42.42337],
+        [-71.17590, 42.42353],
+        [-71.17818, 42.42412],
+        [-71.18297, 42.42428],
+        [-71.18498, 42.42475]
+        ]
+    }
+}
+});
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+        'line-join': 'round',
+        'line-cap': 'round'
+        },
+        'paint': {
+        'line-color': '#766948',
+        'line-width': 6,
+        'line-opacity' : .5
+        
+        
+        }
+});
 });
 </script>
 
