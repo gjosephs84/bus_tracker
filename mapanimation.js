@@ -4,6 +4,22 @@ function. Its length changes depending on how many instances of the 77 bus are
 running at any given time */
 const markers = [];
 
+function setColorAndDirection(aMarker, aDirection) {
+    console.log(aMarker);    
+    console.log("Direction ID: " + aDirection);
+        if (aDirection == 0) {
+                console.log("-------TRYING-------")
+                aMarker.setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Making Sure This Works"));
+            } else {
+                console.log("Should change color");
+                aMarker = new mapboxgl.Marker({
+                    color: "ffffff"
+                })
+                aMarker.setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Inbound to Harvard"));  
+            };
+            return aMarker;
+}
+
 async function run(){
     // get bus data    
 	
@@ -26,8 +42,9 @@ async function run(){
             };
             const popUpContents = "Direction: " + "<br>" + direction;
             console.log(direction);
+            
             let busMarker = new mapboxgl.Marker({
-                color: "#7b7154" //add color
+               color: "#7b7154" //add color
             })
             .setLngLat(busLocation)
             .setPopup(new mapboxgl.Popup().setHTML(popUpContents))
@@ -63,13 +80,15 @@ async function run(){
         const busLocation = [locations[i].attributes.longitude, locations[i].attributes.latitude];
         const directionID = locations[i].attributes.direction_id;
         console.log("Direction ID: " + directionID);
-        if (directionID == 0) {
+        setColorAndDirection(markers[i], directionID);
+        /*if (directionID == 0) {
                 console.log("-------TRIGGERED-------")
                 markers[i].setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Outbound to Arlington Heights"));
             } else {
                 console.log("Should set direction to Harvard");
                 markers[i].setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Inbound to Harvard"));  
-            }
+            }*/
+            
         markers[i].setLngLat(busLocation)
     }
     
