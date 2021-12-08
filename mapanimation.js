@@ -43,10 +43,12 @@ async function run(){
             };
             const popUpContents = "Direction: " + "<br>" + direction;
             console.log(direction);
+            //This is the experimental part where I'm trying to make a custom marker image
             
-            let busMarker = new mapboxgl.Marker({
-               color: "#7b7154" //add color
-            })
+                // create a HTML element for each feature
+                const el = document.createElement('div');
+                el.className = 'marker';
+            let busMarker = new mapboxgl.Marker(el)
             .setLngLat(busLocation)
             .setPopup(new mapboxgl.Popup().setHTML(popUpContents))
             .addTo(map);
