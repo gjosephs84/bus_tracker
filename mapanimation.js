@@ -21,6 +21,7 @@ function setColorAndDirection(aMarker, aDirection) {
 }
 
 async function run(){
+    
     // get bus data    
 	
     const locations = await getBusLocations();
@@ -92,6 +93,8 @@ async function run(){
         markers[i].setLngLat(busLocation)
     }
     
+    let runButton = document.getElementById("run-button")
+    runButton.style.visibility = "hidden";
     let inServiceDiv = document.getElementById("in-service");
     inServiceDiv.style.visibility = "visible";
     inServiceDiv.style.marginTop = (window.innerHeight - 70) + "px";
