@@ -9,7 +9,7 @@ function setColorAndDirection(aMarker, aDirection) {
     console.log("Direction ID: " + aDirection);
         if (aDirection == 0) {
                 console.log("-------TRYING-------")
-                aMarker.setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Making Sure This Works"));
+                aMarker.setPopup(new mapboxgl.Popup().setHTML("Direction: <br>Outbound to Arlington Heights"));
             } else {
                 console.log("Should change color");
                 aMarker = new mapboxgl.Marker({
