@@ -27,3 +27,5 @@ To render a line representing the desired route, acquire coordinates for all poi
 
 # Roadmap of future improvements
 In future updates, I will add next stop information to the popups for each bus.
+
+I will also try to account for buses appearing to be "off route" by eliminating their markers. Oftentimes when a bus is changing routes, coming from or returning to a depot, the data from the MBTA indicates it is still in service. I will work on a solution to eliminate these errant buses from the map.
