@@ -17,8 +17,17 @@ button {
     opacity: .65;
     
 }
-.marker {
-    background-image: url('busicon.png');
+.marker-inbound {
+    background-image: url('bus-inbound.png');
+    background-size: cover;
+    background-color: transparent;
+    width: 31px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+.marker-outbound {
+    background-image: url('bus-outbound.png');
     background-size: cover;
     background-color: transparent;
     width: 31px;
