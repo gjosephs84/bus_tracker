@@ -8,7 +8,7 @@ Outbound buses are displayed with grey icons:
 Inbound buses are displayed with brown icons:
 <img src="bus-inbound.png">
 
-Aditionally, any bus marker can be clicked/tapped to view a popup displaying its location.
+Aditionally, any bus marker can be clicked/tapped to view a popup displaying its direction.
 
 # How to Run
 Visit <a href="gjosephs84.github.io/bus_tracker">gjosephs84.github.io</a> to see Route 77 bus locations in real time
